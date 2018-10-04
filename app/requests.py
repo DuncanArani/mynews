@@ -16,7 +16,7 @@ def configure_request(app):
     global api_key, base_url,  catg_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['SOURCES_API_BASE_URL']
-    NEWS_url = app.config['NEWS_API_BASE_URL']
+    news_url = app.config['NEWS_API_BASE_URL']
     catg_url = app.config['CATG_API_BASE_URL']
 
 
@@ -34,27 +34,27 @@ def get_source(source_name):
 
     return get_source_results
 
-    def process_sources(sources):
+def process_sources(sources):
         '''
-    Function  that processes the news result and transform them to a list of Objects
-    Args:
-        news_list: A list of dictionaries that contain news details
-    Returns :
-        news_results: A list of news objects
-    '''
-    sources_results = []
-    for source in sources:
-        id = source.get('id')
-        title = source.get('title')
-        description = source.get('descriptrion')
-        link = source.get('url')
-        type = source.get('category')
-        place = source.get('country')
+        Function  that processes the news result and transform them to a list of Objects
+        Args:
+            news_list: A list of dictionaries that contain news details
+        Returns :
+            news_results: A list of news objects
+        '''
+        sources_results = []
+        for source in sources:
+            id = source.get('id')
+            title = source.get('title')
+            description = source.get('descriptrion')
+            link = source.get('url')
+            type = source.get('category')
+            place = source.get('country')
 
-        sources_object = Source(id, title, description, link, type, place)
-        sources_results.append(sources_object)
+            sources_object = Source(id, title, description, link, type, place)
+            sources_results.append(sources_object)
 
-    return sources_results
+        return sources_results
 
 
 def get_articles(id):
