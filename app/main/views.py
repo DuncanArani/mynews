@@ -4,9 +4,10 @@ from ..requests import get_source
 from ..models import Source
 
 # Views
+
+
 @main.route('/')
 def index():
-
     ''',
     View root page function that returns the index page and its data
     '''
@@ -19,9 +20,4 @@ def index():
 
     # title = 'Home - Welcome to the number 1 news highlighting website online'
 
-    
-
-    
-    return render_template('index.html', business = business, sports =sports, technology = technology, general =general )
-
-
+    return render_template('index.html', business=business, sports=sports, technology=technology, general=general)

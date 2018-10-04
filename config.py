@@ -1,6 +1,6 @@
 import os
 
-SystemExit
+
 class Config:
     '''
     General configuration parent class
@@ -9,6 +9,11 @@ class Config:
     NEWS_API_BASE_URL ='https://newsapi.org/v2/top-headlines -G \-d country=us \-d apiKey'
     NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    SOURCES_API_BASE_URL = 'https://newsapi.org/v2/sources?country=us&category={}&apiKey={}'
+    NEWS_API_BASE_URL = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'
+    CATG_API_BASE_URL = 'https://newsapi.org/v2/top-headlines?category={}&country=us&apiKey={}'
+    # NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
+    # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 

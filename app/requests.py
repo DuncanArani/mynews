@@ -1,4 +1,5 @@
-import urllib.request, json
+import urllib.request
+import json
 from .models import Source
 # news = news
 
@@ -10,14 +11,12 @@ base_url = None
 news_url = None
 catg_url = None
 
-
 def configure_request(app):
-    global api_key, base_url,  catg_url
+    global api_key, base_url, news_url, catg_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['SOURCES_API_BASE_URL']
     news_url = app.config['NEWS_API_BASE_URL']
     catg_url = app.config['CATG_API_BASE_URL']
-
 
 def get_source(source_name):
     get_source_url = base_url.format(source_name, api_key)
@@ -32,7 +31,6 @@ def get_source(source_name):
             get_source_results = process_sources(get_source_list)
 
     return get_source_results
-
 
 def process_sources(sources):
     '''
@@ -56,7 +54,6 @@ def process_sources(sources):
 
     return sources_results
 
-
 def get_articles(id):
     '''
     Function that processes the articles and returns a list of articles objects
@@ -68,10 +65,10 @@ def get_articles(id):
 
         articles_object = None
         if articles_results['articles']:
-            articles_object = process_articles(articles_results['articles'])
+            articles_object = process_articles(
+                articles_results['articles'])
 
     return articles_object
-
 
 def process_articles(articles_list):
     '''
@@ -93,7 +90,6 @@ def process_articles(articles_list):
 
     return articles_object
 
-
 def get_news(news_sammary):
     get_news_url = base_url.format(news_sammary, api_key)
     with urllib.request.urlopen(get_news_url) as url:
@@ -107,7 +103,6 @@ def get_news(news_sammary):
             get_news_results = process_news(get_news_list)
 
     return get_news_results
-
 
 def process_news(news):
     '''
