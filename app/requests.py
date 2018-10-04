@@ -15,7 +15,7 @@ catg_url = None
 def configure_request(app):
     global api_key, base_url,  catg_url
     api_key = app.config['NEWS_API_KEY']
-    base_url = app.config['SOURCES_API_BASE_URL']
+    base_url = app.config['SOURCE_API_BASE_URL']
     news_url = app.config['NEWS_API_BASE_URL']
     catg_url = app.config['CATG_API_BASE_URL']
 

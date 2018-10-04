@@ -1,11 +1,14 @@
+import os
+
+SystemExit
 class Config:
     '''
     General configuration parent class
     '''
     # contains configurations that are used in both production and development stages. 
-    NEWS_API_BASE_URL ='https://newsapi.org/v2/top-headlines -G \
-    -d country=us \
-    -d apiKey'
+    NEWS_API_BASE_URL ='https://newsapi.org/v2/top-headlines -G \-d country=us \-d apiKey'
+    NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 
