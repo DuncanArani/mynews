@@ -22,6 +22,9 @@ def index():
 
     title = "News Room"
 
+    	# return render_template('index.html',title = title, sources = sources,sports_sources = sports_sources,technology_sources = technology_sources,entertainment_sources = entertainment_sources)
+
+
     return render_template('index.html', title=title, sources=sources, sports_sources=sports_sources, technology_sources=technology_sources, entertainment_sources=entertainment_sources, general_sources=general_sources)
 
     # title = 'Home - Welcome to the number 1 news highlighting website online'

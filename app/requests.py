@@ -10,6 +10,7 @@ api_key = None
 base_url = None
 news_url = None
 catg_url = None
+articles_url = None
 
 
 def configure_request(app):
@@ -18,7 +19,7 @@ def configure_request(app):
     base_url = app.config['SOURCES_API_BASE_URL']
     news_url = app.config['NEWS_API_BASE_URL']
     catg_url = app.config['CATG_API_BASE_URL']
-    articles_url = app.config['ARTICLES_API_BASE_URL']
+    # articles_url = app.config['ARTICLES_API_BASE_URL']
 
 
 def get_sources(source_name):
@@ -34,8 +35,7 @@ def get_sources(source_name):
             get_source_results = process_sources(get_source_list)
 
     return get_source_results
-
-
+    
 def process_sources(sources):
     '''
     Function  that processes the news result and transform them to a list of Objects
