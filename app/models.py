@@ -1,6 +1,6 @@
-class Highlights:
+class News:
     '''
-    Highlights class to define highlights Objects
+     class to define news Objects
     '''
 
     def __init__(self, id, author, title, description, url, urlToImage, publishedAt):
