@@ -11,14 +11,17 @@ base_url = None
 news_url = None
 catg_url = None
 
+
 def configure_request(app):
-    global api_key, base_url, news_url, catg_url
+    global api_key, base_url, news_url, catg_url, articles_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['SOURCES_API_BASE_URL']
     news_url = app.config['NEWS_API_BASE_URL']
     catg_url = app.config['CATG_API_BASE_URL']
+    articles_url = app.config['ARTICLES_API_BASE_URL']
 
-def get_source(source_name):
+
+def get_sources(source_name):
     get_source_url = base_url.format(source_name, api_key)
     with urllib.request.urlopen(get_source_url) as url:
         get_source_data = url.read()
@@ -31,6 +34,7 @@ def get_source(source_name):
             get_source_results = process_sources(get_source_list)
 
     return get_source_results
+
 
 def process_sources(sources):
     '''
@@ -54,6 +58,7 @@ def process_sources(sources):
 
     return sources_results
 
+
 def get_articles(id):
     '''
     Function that processes the articles and returns a list of articles objects
@@ -69,6 +74,7 @@ def get_articles(id):
                 articles_results['articles'])
 
     return articles_object
+
 
 def process_articles(articles_list):
     '''
@@ -90,6 +96,7 @@ def process_articles(articles_list):
 
     return articles_object
 
+
 def get_news(news_sammary):
     get_news_url = base_url.format(news_sammary, api_key)
     with urllib.request.urlopen(get_news_url) as url:
@@ -104,6 +111,7 @@ def get_news(news_sammary):
 
     return get_news_results
 
+
 def process_news(news):
     '''
     Function  that processes the news result and transform them to a list of Objects
@@ -116,14 +124,14 @@ def process_news(news):
     for news in news:
         id = news.get('id')
         title = news.get('name')
-        sammary = news.get('descriptrion')
+        sammary = news.get('description')
         link = news.get('url')
         place = news.get('title')
+        
         urlToImage = urlToImage
         publishedAt = publishedAt
 
-        news_object = news(
-            id, title, link, url, description, urlToImage,  publishedAt)
-        news_results.append(artcle_object)
+        news_object = news(id, title, link,sammary, urlToImage,  publishedAt)
+        news_results.append(articles_object)
 
     return news_results
