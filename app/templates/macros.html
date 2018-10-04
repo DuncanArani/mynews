@@ -1,0 +1,33 @@
+{% macro displaySources(news) %}
+
+   {% for news in news %}
+       
+   
+  <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 news-card;" styles=>
+    <div class="news">
+      <div class="card-body">
+        <h5 class="card-title">{{news.tittle}}</h5>
+        <p class="sammary">{{news.sammary}}</p>
+        <p class="place">{{news.place}}</p>
+        <p class="type">{{news.type}}</p>
+        <a href="{{news.link}}" class="btn btn-primary">click here for more</a>
+        <p class="card-text"><small class="text-muted">upto-date</small></p>
+      </div>
+    </div>
+  </div>
+   {% endfor %}
+{% endmacro %}
+
+<!-- Displaying comments macro -->
+{% macro displayComments(all_comments) %}
+
+    {% for comments in all_comments %}
+
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 comments-card">
+        <h2> {{ comments.title}} </h2>
+        <p> {{ comments.comment | truncate(30)}}</p>
+
+    </div>
+    {% endfor %}
+
+{% endmacro %}
