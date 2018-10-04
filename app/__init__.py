@@ -14,7 +14,8 @@ def create_app(config_name):
 
     # Initializing flask extensions
     bootstrap.init_app(app)
-
+    
+    # registering blueprint
     # Will add the views and forms
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)

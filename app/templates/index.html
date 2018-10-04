@@ -1,1 +1,55 @@
-<h1>news highlights</h1>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>news highlights</title>
+</head>
+<body>
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+<!-- Content block -->
+
+
+
+{% block content %}
+<div class="container">
+
+    <!-- displaying top news of the day -->
+    <div class="row">
+        <h3>TOP NEWS</h3>
+        <ul>
+            {{ macro.displaySources(business)}}
+        </ul>
+    </div>
+    <div class="row">
+        <h3>SPORTS</h3>
+        <ul>
+            {{ macro.displaySources(sports)}}
+        </ul>
+    </div>
+    <div class="row">
+        <h4>TECHNOLOGY</h4>
+        <ul>
+            {{ macro.displaySources(technology)}}
+        </ul>
+    </div>
+    <div class="row">
+        <h3>GENERAL</h3>
+        <ul>
+            {{ macro.displaySources(general)}}
+        </ul>
+    </div>
+</div>
+
+
+
+{% endblock%}
+
+</body>
+</html>
