@@ -12,7 +12,7 @@ class News:
         self.urlToImage = urlToImage
         self.publishedAt = publishedAt
 
-class Source:
+class Sources:
     
     #sources class to define source objects
 

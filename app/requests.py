@@ -1,6 +1,6 @@
 import urllib.request
 import json
-from .models import Source
+from .models import Sources
 # news = news
 
 
@@ -9,7 +9,7 @@ api_key = None
 # Getting the news base url
 base_url = None
 news_url = None
-catg_url = None
+catg_url = None 
 articles_url = None
 
 
@@ -19,24 +19,29 @@ def configure_request(app):
     base_url = app.config['SOURCES_API_BASE_URL']
     news_url = app.config['NEWS_API_BASE_URL']
     catg_url = app.config['CATG_API_BASE_URL']
-    # articles_url = app.config['ARTICLES_API_BASE_URL']
+    articles_url = app.config['ARTICLES_API_BASE_URL']
 
 
-def get_sources(source_name):
-    get_source_url = base_url.format(source_name, api_key)
-    with urllib.request.urlopen(get_source_url) as url:
-        get_source_data = url.read()
-        get_source_response = json.loads(get_source_data)
+def get_sources(category):
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_sources_url = base_url.format(category, api_key)
 
-        get_source_results = None
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data = url.read()
+        get_sources_response = json.loads(get_sources_data)
 
-        if get_source_response['sources']:
-            get_source_list = get_source_response['sources']
-            get_source_results = process_sources(get_source_list)
+        sources_results = None
 
-    return get_source_results
-    
-def process_sources(sources):
+        if get_sources_response['sources']:
+            sources_results_list = get_sources_response['sources']
+            sources_results = process_sources(sources_results_list)
+
+    return sources_results
+
+
+def process_sources(sources_list):
     '''
     Function  that processes the news result and transform them to a list of Objects
     Args:
@@ -45,15 +50,17 @@ def process_sources(sources):
         news_results: A list of news objects
     '''
     sources_results = []
-    for source in sources:
-        id = source.get('id')
-        title = source.get('title')
-        description = source.get('descriptrion')
-        link = source.get('url')
-        type = source.get('category')
-        place = source.get('country')
 
-        sources_object = Source(id, title, description, link, type, place)
+    for source_item in sources_list:
+        id = source_item.get('id')
+        # name = source_item.get('name')
+        description = source_item.get('description')
+        url = source_item.get('url')
+        category = source_item.get('category')
+        language = source_item.get('language')
+        country = source_item.get('country')
+
+        sources_object = Sources(id, description, url, category, country, language)
         sources_results.append(sources_object)
 
     return sources_results
@@ -123,15 +130,15 @@ def process_news(news):
     news_results = []
     for news in news:
         id = news.get('id')
-        title = news.get('name')
+        title = news.get('title')
         sammary = news.get('description')
         link = news.get('url')
-        place = news.get('title')
-        
+        place = news.get('name')
+
         urlToImage = urlToImage
         publishedAt = publishedAt
 
-        news_object = news(id, title, link,sammary, urlToImage,  publishedAt)
+        news_object = news(id, title, link, sammary, urlToImage,  publishedAt)
         news_results.append(articles_object)
 
     return news_results
