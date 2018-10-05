@@ -1,67 +1,50 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
+{% import 'macros.html' as macro %}
+
+<!-- Styles block -->
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>news</title>
-</head>
 <body>
+    {% block content %}
+    <div class="container-fluid position-absolute"style="background-color: rgb(238, 238, 238)">
+    <div class =('row')
+        <div class="col-md-3" style="height: 90vh; width: 15em; overflow: scroll; background-color: rgb(160, 9, 142)">
 
-{% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
-<!-- Content block -->
-
-
-
-{% block content %}
-<div class="container">
-
-    <!-- displaying top news of the day -->
-    <div class="row">
-        <h3>TOP NEWS</h3>
-        <ul>
-            {{ macro.displaySources(business)}}
-        </ul>
-    </div>
-    <div class="row">
-        <h3>SPORTS</h3>
-        <ul>
-            {{ macro.displaySources(sports)}}
-        </ul>
-    </div>
-    <div class="row">
-        <h4>TECHNOLOGY</h4>
-        <ul>
-            {{ macro.displaySources(technology)}}
-        </ul>
-    </div>
-    <div class="row">
-        <h3>GENERAL</h3>
-        <ul>
-            {{ macro.displaySources(general)}}
-        </ul>
-    </div>
-    <div class="row">
-        <h3>ENTERTAINMEN</h3>
-        <ul>
-            {{ macro.displaySources(general)}}
-        </ul>
-    </div>
-    <div class="row">
-        <h3>ARTICLES</h3>
-        <ul>
-            {{ macro.displaySources(general)}}
-        </ul>
+        <h1 class="topd display-1">NEWS</h1>
+    <div class="index container-fluid ">
+        <div class="row">
+            <h1 class="topics col-md-12 text-center display-3 bg-light ">GENERAL</h1>
+            {{ macro.displaySources(general) }}
+        </div>
+        <div class="row"
+             id="business">
+            <h1 class="topics col-md-12 text-center display-3 bg-light">BUSINESS</h1>
+            {{ macro.displaySources(business) }}
+        </div>
+        <div class="row"
+             id="entertainment">
+            <h1 class="topics col-md-12 text-center display-3 bg-light">ENTERTAINMENT</h1>
+            {{ macro.displaySources(entertainment) }}
+        </div>
+        <div class="row"
+             id="technology">
+            <h1 class="topics col-md-12 text-center display-3 bg-light">TECHNOLOGY</h1>
+            {{ macro.displaySources(technology) }}
+        </div>
+        <div class="row"
+             id="science">
+            <h1 class="topics col-md-12 text-center display-3 bg-light">SPORTS</h1>
+            {{ macro.displaySources(science) }}
+        </div>
+        <div class="row"
+        id="science">
+       <h1 class="topics col-md-12 text-center display-3 bg-light">ARTICLES</h1>
+       {{ macro.displaySources(science) }}
+   </div>
+</div>
     </div>
 </div>
-
-
-
-{% endblock%}
-
+    {% endblock%}
 </body>
+
 </html>

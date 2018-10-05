@@ -1,3 +1,4 @@
+
 {% macro displaySources(news) %}
 
    {% for news in news %}
@@ -16,18 +17,4 @@
     </div>
   </div>
    {% endfor %}
-{% endmacro %}
-
-<!-- Displaying comments macro -->
-{% macro displayComments(all_comments) %}
-
-    {% for comments in all_comments %}
-
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 comments-card">
-        <h2> {{ comments.title}} </h2>
-        <p> {{ comments.comment | truncate(30)}}</p>
-
-    </div>
-    {% endfor %}
-
 {% endmacro %}

@@ -1,6 +1,6 @@
 from flask import render_template
 from . import main
-from ..requests import get_sources, get_articles
+from ..requests import get_sources, get_articles,get_news
 
 from ..models import Sources
 
@@ -35,7 +35,7 @@ def articles(id):
     articles = get_articles(id)
     title = f'NH | {id}'
 
-    return render_template('articles.html', title=title, articles=articles)
+    return render_template('index.html', title=title, articles=articles)
 
 
 @main.route('/news/<id>')
@@ -45,7 +45,7 @@ def news(id):
 
     news = get_news(id)
 
-    return render_template('news.html', news=news_articles)
+    return render_template('index.html', news=articles)
 
 
 @main.route('/categories/<category>')
@@ -53,9 +53,9 @@ def general(category):
 
     # view root page function that returns the categories page and its data
 
-    news_categories_articles = get_category(category)
+    news_categories_articles = category(category)
 
-    return render_template('general.html', general=news_categories_articles)
+    return render_template('index.html', general=news_categories_articles)
 
 
 @main.route('/categories/<category>')
@@ -63,9 +63,9 @@ def business(category):
 
     # view root page function that returns the categories page and its data
 
-    news_categories_articles = get_category(category)
+    news_categories_articles = category(category)
 
-    return render_template('business.html', business=news_categories_articles)
+    return render_template('index.html', business=news_categories_articles)
 
 
 @main.route('/categories/<category>')
@@ -73,9 +73,9 @@ def entertainment(category):
 
     # view root page function that returns the categories page and its data
 
-    news_categories_articles = get_category(category)
+    news_categories_articles =category(category)
 
-    return render_template('entertainment.html', entertainment=news_categories_articles)
+    return render_template('index.html', entertainment=news_categories_articles)
 
 
 # @main.route('/categories/<category>')
