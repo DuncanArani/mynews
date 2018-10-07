@@ -15,8 +15,9 @@ def index():
     technology = get_sources('technology')
     science = get_sources('science')
 
-    
-    title = "world news"
+    # for i in real_news:
+    #     print(i.name)
+    title = "hello world"
     return render_template('index.html', title=title, general=general, business=business, entertainment=entertainment, technology=technology, science=science)
 
 

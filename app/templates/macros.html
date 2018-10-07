@@ -1,14 +1,16 @@
+<!-- marco for displaying the source details  -->
+
 {% macro sourcesList(sources) %}
 
 {% for source in sources %}
-<div class="source d-flex flex-wrap p-3 mx-auto">
+<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 news-card;" styles=>
     <div class="card shadow-lg rounded mask flex-center"
          style=" width: 20rem;">
         <div class="card-header text-center">
             <a href="{{source.url}}">
                 <h1>{{source.name}}</h1>
             </a>
-            <p class="text-muted">{{source.cat}}</p>
+            <p class="text-muted">{{source.category}}</p>
             <a href="/articles/{{source.id}}">
                 <p>Show more</p>
             </a>
@@ -18,3 +20,39 @@
         </div>
     </div>
 </div>
+
+{% endfor %}
+
+{% endmacro %}
+<!-- end of source marco -->
+
+<!-- marco for displaying articles detail -->
+{% macro articlesList(articles) %}
+
+{% for article in articles %}
+<div class="article d-flex flex-wrap my-auto">
+    <div class="card border-0 my-4 mx-5">
+        <div class=" row ">
+            <div class="col-md-5 my-2 pr-2 mx-2">
+                <img src="{{article.image}}"
+                     class="w-100">
+                <p class="card-text text-muted">Source: {{article.name}}</p>
+            </div>
+            <div class="col-md-6 px-5 mt-3">
+                <h1 class="card-title mt-4"><u>{{article.title| upper}}</u></h1>
+
+                <div class="card-block px-3 mt-2 pt-2 ml-4">
+                    <h2 class="card-text mt-2 descrip">{{article.description}} </h2>
+                    <p class="card-text mt-2">Author: {{article.author}} </p>
+                    <a href="{{article.url}}"
+                       class="btn btn-primary mt-2">Read More</a>
+                    <p class="mt-1">Date published: {{article.date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endmacro %}

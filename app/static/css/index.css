@@ -1,6 +1,6 @@
 
 .index {
-	background-image: url('../images/straightlines.jpg');
+	background-image: url('../image/World-news.png');
 
 	/* Set a specific height */
 	min-height: 500px;
@@ -20,7 +20,7 @@
 
 .article {
 	/* background-color: #1f1f1f; */
-	background-image: url('../images/straightlines.jpg');
+	background-image: url('../image/World-news.png');
 	/* background-repeat: no-repeat; */
 	/* background-size: cover; */
 	/* border-radius: 0px;
@@ -56,11 +56,11 @@ h1 {
 .source .card {
 	-webkit-box-shadow: -14px 14px 24px -7px rgba(255, 255, 255, 0.69);
 	-moz-box-shadow: -14px 14px 24px -7px rgba(255, 255, 255, 0.69);
-	box-shadow: -14px 14px 24px -7px rgba(255, 255, 255, 0.69);
+	box-shadow: -14px 14px 24px -7px rgba(132, 133, 153, 0.69);
 }
 
 .source .card-body a {
-	color: black;
+	color:blue;
 }
 
 .article .descrip p {
