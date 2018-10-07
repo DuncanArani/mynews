@@ -1,41 +1,30 @@
-class News:
+class Sources:
+    
     '''
-     class to define news Objects
+    Class for holding sources api
     '''
 
-    def __init__(self, id, author, title, description, url, urlToImage, publishedAt):
+    def __init__(self, id, name, descript, url, cat):
+
+        self. id = id
+        self.name = name
+        self. descript = descript
+        self.url = url
+        self.cat = cat
+
+
+class Articles:
+    '''
+    Class for holding articles from everything api
+    '''
+
+    def __init__(self, id, name, author, title, description, url, image, date):
+
         self.id = id
+        self.name = name
         self.author = author
         self.title = title
         self.description = description
         self.url = url
-        self.urlToImage = urlToImage
-        self.publishedAt = publishedAt
-
-class Sources:
-    
-    #sources class to define source objects
-
-
-    def __init__(self, id, title, description, url, category, country):
-        self.id = id
-        self.title = title
-        self.description = description
-        self.link = url
-        self.type = category
-        self.place = country
-
-class Articles:
-        
-    #categories class to define category objects
-    
-
-    def __init__(self, id, title, description, url, urlToImage, publishedAt):
-        self.id =id 
-        self.title = title
-        self.description = description
-        self.url = url
-        self.urlToImage = urlToImage
-        self.publishedAt = publishedAt
-
-
+        self.image = image
+        self.date = date

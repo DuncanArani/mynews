@@ -1,8 +1,8 @@
-from app import create_app
-from flask_script import Manager, Shell, Server
+from app import create_news
+from flask_script import Manager, Server
 
 # Creating app instance
-app = create_app('development')
+app = create_news('development')
 
 manager = Manager(app)
 
@@ -16,8 +16,6 @@ def test():
     tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
 
-
-manager.add_command('server', Server)
 
 if __name__ == '__main__':
     manager.run()

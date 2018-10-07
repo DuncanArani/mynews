@@ -1,20 +1,20 @@
+{% macro sourcesList(sources) %}
 
-{% macro displaySources(news) %}
-
-   {% for news in news %}
-       
-   
-  <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 news-card;" styles=>
-    <div class="news">
-      <div class="card-body">
-        <h5 class="card-title">{{news.tittle}}</h5>
-        <p class="sammary">{{news.sammary}}</p>
-        <p class="place">{{news.place}}</p>
-        <p class="type">{{news.type}}</p>
-        <a href="{{news.link}}" class="btn btn-primary">click here for more</a>
-        <p class="card-text"><small class="text-muted">upto-date</small></p>
-      </div>
+{% for source in sources %}
+<div class="source d-flex flex-wrap p-3 mx-auto">
+    <div class="card shadow-lg rounded mask flex-center"
+         style=" width: 20rem;">
+        <div class="card-header text-center">
+            <a href="{{source.url}}">
+                <h1>{{source.name}}</h1>
+            </a>
+            <p class="text-muted">{{source.cat}}</p>
+            <a href="/articles/{{source.id}}">
+                <p>Show more</p>
+            </a>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{source.descript}}</p>
+        </div>
     </div>
-  </div>
-   {% endfor %}
-{% endmacro %}
+</div>

@@ -1,144 +1,106 @@
+# from main import main
 import urllib.request
 import json
-from .models import Sources
-# news = news
+import app
+from .models import Sources, Articles
 
-
-# Getting api key
+# Getting the url key
 api_key = None
-# Getting the news base url
-base_url = None
-news_url = None
-catg_url = None 
-articles_url = None
+
+# Getting base url
+news_a_base_url = None
+news_s_base_url = None
+news_h_base_url = None
 
 
 def configure_request(app):
-    global api_key, base_url, news_url, catg_url, articles_url
-    api_key = app.config['NEWS_API_KEY']
-    base_url = app.config['SOURCES_API_BASE_URL']
-    news_url = app.config['NEWS_API_BASE_URL']
-    catg_url = app.config['CATG_API_BASE_URL']
-    articles_url = app.config['ARTICLES_API_BASE_URL']
+    global api_key, news_a_base_url, news_s_base_url, news_h_base_url
+    news_s_base_url = app.config['NEWS_SOURCE_BASE_URL']
+    news_a_base_url = app.config['NEWS_ARTICLE_BASE_URL']
+    news_h_base_url = app.config['NEWS_TOPHEADLINES_BASE_URL']
+    api_key = app.config['NEWS_KEY']
 
 
 def get_sources(category):
     '''
-    Function that gets the json response to our url request
+    using base_url to get data from the sources
     '''
-    get_sources_url = base_url.format(category, api_key)
-
+    get_sources_url = news_s_base_url.format(category, api_key)
     with urllib.request.urlopen(get_sources_url) as url:
-        get_sources_data = url.read()
-        get_sources_response = json.loads(get_sources_data)
-
+        sources_data = url.read()
+        sources_response = json.loads(sources_data)
         sources_results = None
 
-        if get_sources_response['sources']:
-            sources_results_list = get_sources_response['sources']
-            sources_results = process_sources(sources_results_list)
+        if sources_response['sources']:
+            sources_result_list = sources_response['sources']
+            sources_results = process_results(sources_result_list)
 
     return sources_results
 
 
-def process_sources(sources_list):
+def process_results(sources_list):
     '''
-    Function  that processes the news result and transform them to a list of Objects
-    Args:
-        news_list: A list of dictionaries that contain news details
-    Returns :
-        news_results: A list of news objects
+    getting instance of the list of sources
     '''
-    sources_results = []
+    sources_result = []
+    for source in sources_list:
+        id = source.get('id')
+        name = source.get('name')
+        descript = source.get('description')
+        url = source.get('url')
+        cat = source.get('category')
+        # date = news.get('date')
 
-    for source_item in sources_list:
-        id = source_item.get('id')
-        # name = source_item.get('name')
-        description = source_item.get('description')
-        url = source_item.get('url')
-        category = source_item.get('category')
-        language = source_item.get('language')
-        country = source_item.get('country')
+        sources_object = Sources(id, name, descript, url, cat)
+        sources_result.append(sources_object)
+    return sources_result
 
-        sources_object = Sources(id, description, url, category, country, language)
-        sources_results.append(sources_object)
 
-    return sources_results
+'''
+Using the base url everything we can get article of specific sources articles
+'''
 
 
 def get_articles(id):
     '''
-    Function that processes the articles and returns a list of articles objects
+    getting a article_base url to get artciles with id from the source
     '''
-    get_articles_url = articles_url.format(id, api_key)
 
+    get_articles_url = news_a_base_url.format(id, api_key)
+    print(get_articles_url)
     with urllib.request.urlopen(get_articles_url) as url:
-        articles_results = json.loads(url.read())
+        articles_data = url.read()
+        articles_response = json.loads(articles_data)
 
-        articles_object = None
-        if articles_results['articles']:
-            articles_object = process_articles(
-                articles_results['articles'])
+        articles_results = None
 
-    return articles_object
+        if articles_response['articles']:
+            articles_result_list = articles_response['articles']
+            articles_results = process_articles(articles_result_list)
+    return articles_results
 
 
 def process_articles(articles_list):
     '''
+    getting instance of the list of articles
     '''
-    articles_object = []
-    for article_item in articles_list:
-        id = article_item.get('id')
-        author = article_item.get('author')
-        title = article_item.get('title')
-        description = article_item.get('description')
-        url = article_item.get('url')
-        image = article_item.get('urlToImage')
-        date = article_item.get('publishedAt')
+    articles_result = []
+
+    print(articles_result)
+    for article in articles_list:
+        id = article.get('id')
+        name = article.get('name')
+        author = article.get('author')
+        title = article.get('title')
+        description = article.get('description')
+        url = article.get('url')
+        image = article.get('urlToImage')
+        date = article.get('publishedAt')
 
         if image:
-            articles_result = Articles(
-                id, author, title, description, url, image, date)
-            articles_object.append(articles_result)
 
-    return articles_object
+            articles_object = Articles(
+                id, name, author, title, description, url, image, date)
+            articles_result.append(articles_object)
 
-
-def get_news(news_sammary):
-    get_news_url = base_url.format(news_sammary, api_key)
-    with urllib.request.urlopen(get_news_url) as url:
-        get_news_data = url.read()
-        get_news_response = json.loads(get_news_data)
-
-        get_news_results = None
-
-        if get_news_response['news']:
-            get_news_list = get_news_response['news']
-            get_news_results = process_news(get_news_list)
-
-    return get_news_results
-
-
-def process_news(news):
-    '''
-    Function  that processes the news result and transform them to a list of Objects
-    Args:
-        news_list: A list of dictionaries that contain news details
-    Returns :
-        news_results: A list of news objects
-    '''
-    news_results = []
-    for news in news:
-        id = news.get('id')
-        title = news.get('title')
-        sammary = news.get('description')
-        link = news.get('url')
-        place = news.get('name')
-
-        urlToImage = urlToImage
-        publishedAt = publishedAt
-
-        news_object = news(id, title, link, sammary, urlToImage,  publishedAt)
-        news_results.append(articles_object)
-
-    return news_results
+    return articles_result

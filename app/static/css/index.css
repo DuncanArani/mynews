@@ -1,1 +1,68 @@
 
+.index {
+	background-image: url('../images/straightlines.jpg');
+
+	/* Set a specific height */
+	min-height: 500px;
+
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+	/* border-radius: 0px;
+	padding: 0px;
+	margin: 0px;
+	border: 0 none; */
+
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.article {
+	/* background-color: #1f1f1f; */
+	background-image: url('../images/straightlines.jpg');
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+	/* border-radius: 0px;
+	padding: 0px;
+	margin: 0px;
+	border: 0 none */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+h1 {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.topics {
+	height: 2em;
+	color: #1c0603;
+	background-color: aliceblue;
+	font-family: 'Lobster', serif;
+}
+
+.topd {
+	overflow: none;
+}
+
+.source .card-body {
+	background-color: black;
+	color: white;
+}
+
+.source .card {
+	-webkit-box-shadow: -14px 14px 24px -7px rgba(255, 255, 255, 0.69);
+	-moz-box-shadow: -14px 14px 24px -7px rgba(255, 255, 255, 0.69);
+	box-shadow: -14px 14px 24px -7px rgba(255, 255, 255, 0.69);
+}
+
+.source .card-body a {
+	color: black;
+}
+
+.article .descrip p {
+	size: 1.2em;
+}
