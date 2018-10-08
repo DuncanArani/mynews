@@ -1,6 +1,5 @@
-
 .index {
-	background-image: url('../image/World-news.png');
+	background-image: url('../images/World-news.png');
 
 	/* Set a specific height */
 	min-height: 500px;
@@ -20,7 +19,7 @@
 
 .article {
 	/* background-color: #1f1f1f; */
-	background-image: url('../image/World-news.png');
+	background-image: url('../images/World-news.png');
 	/* background-repeat: no-repeat; */
 	/* background-size: cover; */
 	/* border-radius: 0px;
@@ -60,7 +59,7 @@ h1 {
 }
 
 .source .card-body a {
-	color:blue;
+	color: blue;
 }
 
 .article .descrip p {

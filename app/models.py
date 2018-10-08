@@ -1,5 +1,5 @@
 class Sources:
-    
+
     '''
     Class for holding sources api
     '''

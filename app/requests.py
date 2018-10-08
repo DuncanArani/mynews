@@ -21,7 +21,6 @@ def configure_request(app):
     api_key = app.config['NEWS_KEY']
 
 
-
 def get_sources(category):
     '''
     using base_url to get data from the sources
