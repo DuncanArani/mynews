@@ -1,47 +1,44 @@
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
             <a class="navbar-brand" href="#">News</a>
         </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                          <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-                          <li><a href="#">Headlines</a></li>
-            <!-- <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Headlines</a>
-            </li> -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Catergories
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item smooth-scroll" href="#" href=" #">General</a>
-                    <a class="dropdown-item smooth-scroll" href="/#business" href=" #">Business</a>
-                    <a class="dropdown-item smooth-scroll" href="/#entertainment" href=" #">Entertainment</a>
-                    <a class="dropdown-item smooth-scroll" href="/#technology" href=" #">Techonolgy</a>
-                    <a class="dropdown-item smooth-scroll" href="/#science" href=" #">Science</a>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Headlines</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">Category<span class="caret"></span></a>
+                            
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">General</a></li>
+                                    <li><a href="#">Bussiness</a></li>
+                                    <li><a href="#">Entertainment</a></li>
+                                    <li><a href="#">Technology</a></li>
+                                    <li><a href="#">Science</a></li>
+                                    <!-- <li role="separator" class="divider"></li> -->
+
+                                </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">search</button>
+                          </form>
                 </div>
-            </li>
-        </ul>
-        <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">search</button>
-          </form>
-    </div>
+        </div>
 </nav>
